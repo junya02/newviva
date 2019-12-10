@@ -18,8 +18,8 @@
             android:title="@string/menu_graph" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:icon="@drawable/ic_fitness_center_black_24dp"
+            android:title="@string/menu_traning" />
     </group>
 
     <item android:title="Communicate">
@@ -39,23 +39,31 @@
         <menu>
             <item
             android:id="@+id/nav_mine"
+            android:name="com.example.newvivamacho.ui.mine.MineFragment"
             android:icon="@mipmap/mine"
-            android:title="@string/menu_main" />
+            android:title="@string/menu_main"
+                tools:layout="@layout/fragment_training_webview"   />
 
             <item
                 android:id="@+id/nav_hand"
+                android:name="com.example.newvivamacho.ui.hand.HandFragment"
                 android:icon="@mipmap/hand"
-                android:title="@string/menu_hand" />
+                android:title="@string/menu_hand"
+                tools:layout="@layout/fragment_training_webview"/>
             <item
                 android:id="@+id/nav_weight"
+                android:name="com.example.newvivamacho.ui.weight.WeightFragment"
                 android:icon="@drawable/ic_fitness_center_black_24dp"
-                android:title="@string/menu_weight" />
+                android:title="@string/menu_weight"
+                tools:layout="@layout/fragment_training_webview"/>
 
 
             <item
                 android:id="@+id/nav_machine"
+                android:name="com.example.newvivamacho.ui.machine.MachineFragment"
                 android:icon="@mipmap/runmachine"
-                android:title="@string/menu_machine" />
+                android:title="@string/menu_machine"
+                tools:layout="@layout/fragment_training_webview"/>
 
 
         </menu>

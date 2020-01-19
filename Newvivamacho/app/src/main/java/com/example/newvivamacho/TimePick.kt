@@ -20,6 +20,7 @@ class TimePick : DialogFragment(), TimePickerDialog.OnTimeSetListener {
         return TimePickerDialog(
             activity,
             // in order to return parameters to MainActivity
+            android.R.style.Theme_Material_Dialog,
             activity as MainActivity?,
             hour,
             minute,

@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
             addfragment.setArguments(bundle)
 
             Log.d("TAG",starttime.toString())
+
             return addfragment
         }
     }
@@ -90,6 +91,7 @@ class HomeFragment : Fragment() {
 
         datetext.text = "    " + today
         datetext2.text = month
+
 
 
         //カレンダー

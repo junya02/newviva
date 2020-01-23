@@ -52,7 +52,6 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 //        }
 
 
-
         return root
 
     }
@@ -106,12 +105,12 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         okbutton.setOnClickListener{
             val settime = settimetext.text
             val transaction =  activity?.supportFragmentManager?.beginTransaction()
-            HomeFragment.newInstance(settime,selectmenu)
+//            HomeFragment.newInstance(settime,selectmenu)
 
             transaction?.remove(this)
             //transaction?.replace(R.id.linearlayout,HomeFragment.newInstance(settime,selectmenu))
             transaction?.commit()
-            HomeFragment()
+            HomeFragment.newInstance(settime,selectmenu)
         }
 
     }

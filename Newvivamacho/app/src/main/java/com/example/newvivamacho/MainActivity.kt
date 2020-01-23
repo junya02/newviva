@@ -16,8 +16,12 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import android.view.View
 import android.widget.TextView
 import android.widget.TimePicker
+import com.example.newvivamacho.ui.add.AddFragment
+import kotlinx.android.synthetic.main.add_fragment.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -61,8 +66,17 @@ class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    fun showTimePickerDialog(v: View) {
+        val newFragment = TimePick()
+        newFragment.show(supportFragmentManager, "timePicker")
+
+    }
+
     //TimePicker
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+        val str = String.format(Locale.JAPAN,"%02d:%02d", hourOfDay, minute)
+        settimetext.text = str
+//        AddFragment.newInstance2(str)
     }
 
 }

@@ -8,28 +8,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import android.widget.TimePicker
+import android.widget.*
 
 import com.example.newvivamacho.R
+import com.example.newvivamacho.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.add_fragment.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
 
 
-
     companion object {
-        fun newInstance() = AddFragment()
+        fun newInstance(date: String?): AddFragment {
+            val addfragment = AddFragment()
+            val bundle= Bundle()
+            bundle.putString("Date",date)
+            addfragment.setArguments(bundle)
 
-        val fragment01: AddFragment = AddFragment()
-
-        val args = Bundle()
-
+            return addfragment
+        }
+//
     }
 
     private lateinit var viewModel: AddViewModel
+    private var date:String? = ""
+//    private var starttime = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,30 +42,83 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
     ): View? {
         val root = inflater.inflate(R.layout.add_fragment, container, false)
 
-        val startdatetext:TextView = root.findViewById(R.id.startdatetext)
-        startdatetext.text = "開始時刻　"
+        val bundle = arguments
+//        val bundle2 = arguments
+        if (bundle != null) {
+            date = bundle.getString("Date")
+        }
+//        if (bundle2 != null) {
+//            starttime = bundle2.getString("Starttime")
+//        }
+
+
+
+        return root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+        //現在時刻
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
+        val time = String.format("%02d:%02d",hour,minute)
+
+
+//        val startdatetext:TextView = findViewById(R.id.startdatetext)
+//        val settimetext:TextView = root.findViewById(R.id.settimetext)
+        startdatetext.text = "開始時刻　       " + date
+        settimetext.text = time
 
         startdatetext.setOnClickListener{
             //TimePicker
             val newFragment = TimePick()
             fragmentManager?.let { newFragment.show(it, "timepicker") }
-
         }
 
-        val cancelbutton:Button = root.findViewById(R.id.cancelbutton)
+        //スピナー
+        //val spinner: Spinner = root.findViewById(R.id.spinner)
+
+        ArrayAdapter.createFromResource(
+            context,
+            R.array.traning_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+        val selectmenu = spinner.selectedItem.toString()
+        //val selectmenu = menu.toString()
+
+        //キャンセルボタンのあれ
+        //val cancelbutton:Button = root.findViewById(R.id.cancelbutton)
         cancelbutton.setOnClickListener{
             val transaction =  activity?.supportFragmentManager?.beginTransaction()
             transaction?.remove(this)
             transaction?.commit()
         }
-        return root
+
+        //追加ボタンのあれ
+        //val okbutton:Button = root.findViewById(R.id.okbutton)
+
+        okbutton.setOnClickListener{
+            val settime = settimetext.text
+            val transaction =  activity?.supportFragmentManager?.beginTransaction()
+            HomeFragment.newInstance(settime,selectmenu)
+
+            transaction?.remove(this)
+            //transaction?.replace(R.id.linearlayout,HomeFragment.newInstance(settime,selectmenu))
+            transaction?.commit()
+            HomeFragment()
+        }
 
     }
 
     override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
-        val str = String.format(Locale.US, "%d:%d", hourOfDay, minute)
+        val str = String.format(Locale.US,"%d:%d", hourOfDay, minute)
 
-        // use the plug in of Kotlin Android Extensions
         startdatetext.text = "開始時刻　" + str
 
     }

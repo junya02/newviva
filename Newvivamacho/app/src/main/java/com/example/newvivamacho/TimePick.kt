@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import com.example.newvivamacho.MainActivity
+import com.example.newvivamacho.ui.add.AddFragment
 
 
 class TimePick : DialogFragment(), TimePickerDialog.OnTimeSetListener {

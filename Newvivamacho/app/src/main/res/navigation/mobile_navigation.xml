@@ -12,22 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.newvivamacho.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_chat"
+        android:name="com.example.newvivamacho.ui.chat.ChatFragment"
         android:label="@string/menu_chat"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/nav_graph"
-        android:name="com.example.newvivamacho.ui.graph.graphFragment"
+        android:name="com.example.newvivamacho.ui.graph.GraphFragment"
         android:label="@string/menu_graph"
         tools:layout="@layout/fragment_graph" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.newvivamacho.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_menu"
+        android:name="com.example.newvivamacho.ui.menu.MenuFragment"
+        android:label="筋トレメニュー"
+        tools:layout="@layout/fragment_menu" />
 
     <fragment
         android:id="@+id/nav_share"
@@ -35,9 +35,5 @@
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.newvivamacho.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+
 </navigation>

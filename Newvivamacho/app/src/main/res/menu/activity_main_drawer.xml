@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_schedule_black_24dp"
             android:title="スケジュール" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_chat"
             android:icon="@drawable/ic_chat_black_24dp"
             android:title="@string/menu_chat" />
         <item
@@ -17,22 +17,17 @@
             android:icon="@drawable/ic_timeline_black_24dp"
             android:title="@string/menu_graph" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/nav_menu"
+            android:icon="@drawable/ic_accessibility_black_24dp"
+            android:title="筋トレメニュー" />
     </group>
 
     <item android:title="トレーニング">
-        <menu>
+
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="あ" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="い" />
-        </menu>
     </item>
 
 </menu>

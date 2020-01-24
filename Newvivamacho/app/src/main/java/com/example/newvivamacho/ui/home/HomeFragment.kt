@@ -102,15 +102,17 @@ class HomeFragment : Fragment() {
 
         compactcalendar_view.setLocale( Cal.timeZone, JAPANESE)
 
+
         //当日追加パターン
-        //val addbutton:Button = root.findViewById(R.id.addButton)
-//        addbutton.setOnClickListener{
-//            date = df3.format(today)
-//            val transaction =  activity?.supportFragmentManager?.beginTransaction()
-//            transaction?.replace(R.id.linearlayout, AddFragment.newInstance(date))
-//            transaction?.addToBackStack(null)
-//            transaction?.commit()
-//        }
+        //val addbutton:Button = view.findViewById(R.id.addButton)
+        date = df3.format(Date())
+        addButton.setOnClickListener{
+
+            val transaction =  activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.linearlayout, AddFragment.newInstance(date))
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+        }
 
         compactcalendar_view.setListener(object : CompactCalendarView.CompactCalendarViewListener {
             // 日付がクリックされたときの処理

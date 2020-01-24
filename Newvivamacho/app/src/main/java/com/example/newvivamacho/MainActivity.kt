@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_graph,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home, R.id.nav_chat, R.id.nav_graph,
+                R.id.nav_menu, R.id.nav_share
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

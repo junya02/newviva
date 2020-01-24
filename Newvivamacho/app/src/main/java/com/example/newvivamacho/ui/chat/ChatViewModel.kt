@@ -1,13 +1,13 @@
-package com.example.newvivamacho.ui.tools
+package com.example.newvivamacho.ui.chat
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ToolsViewModel : ViewModel() {
+class ChatViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is tools Fragment"
+        value = "準備中です"
     }
     val text: LiveData<String> = _text
 }

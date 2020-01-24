@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.newvivamacho.R
 
-class graphFragment : Fragment() {
+class GraphFragment : Fragment() {
 
-    private lateinit var graphViewModel: graphViewModel
+    private lateinit var sendViewModel: GraphViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        graphViewModel =
-            ViewModelProviders.of(this).get(graphViewModel::class.java)
+        sendViewModel =
+            ViewModelProviders.of(this).get(GraphViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_graph, container, false)
-        val textView: TextView = root.findViewById(R.id.text_graph)
-        graphViewModel.text.observe(this, Observer {
+        val textView: TextView = root.findViewById(R.id.text_send)
+        sendViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

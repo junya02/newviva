@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/nav_graph"
-        android:name="com.example.newvivamacho.ui.graph.GraphFragment"
+        android:name="com.example.newvivamacho.ui.graph.Graph2Fragment"
         android:label="@string/menu_graph"
-        tools:layout="@layout/fragment_graph" />
+        tools:layout="@layout/fragment_graph2" />
 
     <fragment
         android:id="@+id/nav_menu"

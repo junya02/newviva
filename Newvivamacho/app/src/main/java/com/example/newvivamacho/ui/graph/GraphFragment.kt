@@ -1,4 +1,4 @@
-package com.example.newvivamacho.ui.tools
+package com.example.newvivamacho.ui.graph
 
 import android.graphics.Color
 import android.graphics.Typeface

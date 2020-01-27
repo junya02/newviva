@@ -27,21 +27,9 @@ import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
-    private var starttime = ""
-    private var selectmenu = ""
 
     companion object {
-        fun newInstance(starttime: CharSequence?, menu: String):AddFragment {
-            val addfragment = AddFragment()
-            val bundle = Bundle()
-            bundle.putCharSequence("starttime",starttime)
-            bundle.putString("Menu",menu)
-            addfragment.setArguments(bundle)
 
-            Log.d("TAG",starttime.toString())
-
-            return addfragment
-        }
     }
 
 
@@ -61,14 +49,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(this, Observer {
             //textView.text = it
         })
-
-        val bundle = arguments
-        if (bundle != null) {
-            starttime = bundle.getString("Starttime")
-            selectmenu = bundle.getString("Menu")
-        }
-
-
 
 
 
@@ -91,6 +71,8 @@ class HomeFragment : Fragment() {
 
         datetext.text = "    " + today
         datetext2.text = month
+
+
 
 
 
@@ -140,20 +122,7 @@ class HomeFragment : Fragment() {
         //listview
         //val timelist:ListView = root.findViewById(R.id.timelist)
         //val menulist:ListView = root.findViewById(R.id.menulist)
-        val timeArray:ArrayList<String> = arrayListOf()
-        val menuArray:ArrayList<String> = arrayListOf()
 
-
-        if(starttime != ""){
-            timeArray.add(starttime)
-            menuArray.add(selectmenu)
-        }
-
-        val timeadapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, timeArray)
-        val menuadapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, menuArray)
-
-        timelist.adapter = timeadapter
-        menulist.adapter = menuadapter
 
     }
 }

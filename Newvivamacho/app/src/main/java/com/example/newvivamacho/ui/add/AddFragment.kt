@@ -9,10 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.ListFragment
 
 import com.example.newvivamacho.R
 import com.example.newvivamacho.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.add_fragment.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -78,7 +80,8 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         }
 
         //スピナー
-        //val spinner: Spinner = root.findViewById(R.id.spinner)
+        val spinner: Spinner = view.findViewById(R.id.spinner)
+        var selectmenu = ""
 
         ArrayAdapter.createFromResource(
             context,
@@ -87,12 +90,26 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
+
         }
-        val selectmenu = spinner.selectedItem.toString()
-        //val selectmenu = menu.toString()
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            //　アイテムが選択された時
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?, position: Int, id: Long
+            ) {
+//                val spinnerParent = parent as Spinner
+                // Kotlin Android Extensions
+                selectmenu = spinner.selectedItem as String
+            }
+        }
 
         //キャンセルボタンのあれ
-        //val cancelbutton:Button = root.findViewById(R.id.cancelbutton)
         cancelbutton.setOnClickListener{
             val transaction =  activity?.supportFragmentManager?.beginTransaction()
             transaction?.remove(this)
@@ -100,17 +117,14 @@ class AddFragment : Fragment(), TimePickerDialog.OnTimeSetListener {
         }
 
         //追加ボタンのあれ
-        //val okbutton:Button = root.findViewById(R.id.okbutton)
-
         okbutton.setOnClickListener{
-            val settime = settimetext.text
+            val settime= settimetext.text.toString()
+
             val transaction =  activity?.supportFragmentManager?.beginTransaction()
 //            HomeFragment.newInstance(settime,selectmenu)
-
-            transaction?.remove(this)
+            transaction?.replace(R.id.linearlayout, com.example.newvivamacho.ui.list.ListFragment.newInstance(settime,selectmenu))
             //transaction?.replace(R.id.linearlayout,HomeFragment.newInstance(settime,selectmenu))
             transaction?.commit()
-            HomeFragment.newInstance(settime,selectmenu)
         }
 
     }

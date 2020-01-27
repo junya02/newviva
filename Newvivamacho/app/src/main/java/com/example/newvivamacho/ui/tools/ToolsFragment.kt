@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -29,8 +30,6 @@ class ToolsFragment : Fragment() {
 
     // スタイルとフォントファミリーの設定
     private var mTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL)
-    // データの個数
-    private val chartDataCount = 20
 
     // ↓この定義が必要（追加）
     private var lineC: LineChart? = null
@@ -48,10 +47,6 @@ class ToolsFragment : Fragment() {
         // ↓この定義が必要（追加）
         lineC = root.findViewById(R.id.lineChart)
         weightText = root.findViewById(R.id.weightText)
-        // グラフの設定
-        //setupLineChart()
-        // データの設定
-        //lineC!!.data = lineData(chartDataCount, 100f)
 
         return root
     }
@@ -62,28 +57,26 @@ class ToolsFragment : Fragment() {
             weight.add(weightText!!.text.toString().toFloatOrNull())
             //lineC = root.findViewById(R.id.lineChart)
             //weightText = root.findViewById(R.id.weightText)
-            // グラフの設定
-            //if (weight.size >= 1) {
-                setupLineChart()
-                lineC!!.data = lineData(chartDataCount, 100f)
-            //}
-            
 
+            // グラフの設定
+            if (weight.size >= 0) {
+                setupLineChart()
+                lineC!!.data = lineData(weight.size, 100f)
+
+            }
         }
     }
 
     // LineChart用のデータ作成
-    private fun lineData(count: Int, range: Float): LineData {
+    private fun lineData(count : Int, range: Float): LineData {
 
         val values = mutableListOf<Entry>()
 
+
         for (i in weight.indices) {
-            // 値はランダムで表示させる
-            //(Math.random() * (range)).toFloat()
-              //        val value = (Math.random() * (range)).toFloat()
-            //values.add(Entry(i.toFloat(), value))
+
             values.add(Entry(i.toFloat(), weight[i]!!.toFloat()))
-            //weight=weight+1
+
         }
 
         // グラフのレイアウトの設定
@@ -98,6 +91,7 @@ class ToolsFragment : Fragment() {
             setDrawValues(true)
             // 線の太さ
             lineWidth = 2f
+
         }
         val data = LineData(yVals)
         return data
@@ -122,7 +116,7 @@ class ToolsFragment : Fragment() {
                 verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
                 horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
                 orientation = Legend.LegendOrientation.HORIZONTAL
-                setDrawInside(true)
+                setDrawInside(false)
             }
 
             //y軸右側の設定
@@ -133,7 +127,7 @@ class ToolsFragment : Fragment() {
                 typeface = mTypeface
                 setDrawLabels(false)
                 // 格子線を表示する
-                setDrawGridLines(true)
+                setDrawGridLines(false)
             }
 
             //y軸左側の表示
@@ -141,7 +135,7 @@ class ToolsFragment : Fragment() {
                 typeface = mTypeface
                 textColor = Color.BLACK
                 // 格子線を表示する
-                setDrawGridLines(false)
+                setDrawGridLines(true)
             }
         }
     }

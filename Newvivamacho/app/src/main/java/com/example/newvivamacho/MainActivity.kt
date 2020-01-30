@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_chat, R.id.nav_graph,
-                R.id.nav_menu, R.id.nav_share
+                R.id.nav_menu
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

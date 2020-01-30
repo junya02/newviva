@@ -29,11 +29,5 @@
         android:label="筋トレメニュー"
         tools:layout="@layout/fragment_menu" />
 
-    <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.newvivamacho.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
 
 </navigation>
